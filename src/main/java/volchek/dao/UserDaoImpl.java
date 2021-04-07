@@ -1,15 +1,13 @@
 package volchek.dao;
 
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 import volchek.models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Component
-@Transactional(readOnly = true)
+@Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
@@ -28,21 +26,18 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional
     public User saveUser(User user) {
         entityManager.persist(user);
         return user;
     }
 
     @Override
-    @Transactional
     public User updateUser(User updateUser) {
         entityManager.merge(updateUser);
         return updateUser;
     }
 
     @Override
-    @Transactional
     public void deleteUser(int id) {
         entityManager.createQuery("DELETE FROM User u WHERE u.id=: id")
                 .setParameter("id", id).executeUpdate();

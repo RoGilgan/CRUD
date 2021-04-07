@@ -16,7 +16,7 @@ import volchek.service.UserService;
 
 @Controller
 @RequestMapping("/people")
-public class PeopleController {
+public class UserController {
 
     @Autowired
     private UserService userService;
