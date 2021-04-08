@@ -18,8 +18,12 @@ import volchek.service.UserService;
 @RequestMapping("/people")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping()
     public String showAll(Model model) {

@@ -23,8 +23,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class PersistenceJPAConfig {
 
+    private final Environment env;
+
     @Autowired
-    private Environment env;
+    public PersistenceJPAConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource getDataSource() {
